@@ -24,6 +24,7 @@ public class EstadoService {
     public List<EstadoDTO> findAll(){
         List<Estado> estado =
                 estadoRepository.findAll();
+        System.out.println(estado);
         return estado.stream()
                 .map(estadoMapper::toDTO)
                 .collect(Collectors.toList());

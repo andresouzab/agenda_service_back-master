@@ -24,8 +24,8 @@ public class Cidade implements Serializable {
     protected Estado estado;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cidade")
-    private List<Endereco> endereco = new ArrayList<>();
+    @OneToMany(mappedBy = "cidade", fetch = FetchType.EAGER)
+    private List<Endereco> enderecos = new ArrayList<>();
 
     public Cidade() {
     }
@@ -58,6 +58,14 @@ public class Cidade implements Serializable {
 
     public void setEstado(Estado estado) {
         this.estado = estado;
+    }
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
     }
 
     @Override

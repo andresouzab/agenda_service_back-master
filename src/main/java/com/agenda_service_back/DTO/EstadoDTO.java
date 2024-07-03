@@ -1,8 +1,10 @@
 package com.agenda_service_back.DTO;
 
+import com.agenda_service_back.entity.Cidade;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class EstadoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -13,7 +15,7 @@ public class EstadoDTO implements Serializable {
     protected String nome;
     @NotNull(message = "o campo UF é requerido.")
     protected String uf;
-
+    private List<Cidade> cidades;
 
     public EstadoDTO() {
 
@@ -46,5 +48,13 @@ public class EstadoDTO implements Serializable {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public List<Cidade> getCidades() {
+        return cidades;
+    }
+
+    public void setCidades(List<Cidade> cidades) {
+        this.cidades = cidades;
     }
 }

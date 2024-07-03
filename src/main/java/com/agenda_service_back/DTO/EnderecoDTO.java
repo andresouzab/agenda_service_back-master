@@ -2,9 +2,12 @@ package com.agenda_service_back.DTO;
 
 import com.agenda_service_back.entity.Cidade;
 
+import com.agenda_service_back.entity.Pessoa;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EnderecoDTO implements Serializable {
 
@@ -25,6 +28,9 @@ public class EnderecoDTO implements Serializable {
     @NotNull(message = "o campo CIDADE é requerido.")
 
     protected Cidade cidade;
+
+    protected List<Pessoa> pessoas;
+
 
     public EnderecoDTO(Integer id, String rua, String cep, Integer numero, String complemento, String bairro, Cidade cidade) {
         this.id = id;
@@ -93,6 +99,14 @@ public class EnderecoDTO implements Serializable {
 
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
+    }
+
+    public List<Pessoa> getPessoas() {
+        return pessoas;
+    }
+
+    public void setPessoas(List<Pessoa> pessoas) {
+        this.pessoas = pessoas;
     }
 
     @Override

@@ -22,6 +22,8 @@ public class CidadeDTO implements Serializable {
     @NotNull(message = "o campo ESTADO é requerido.")
     protected Estado estado;
 
+    private List<Endereco> enderecos = new ArrayList<>();
+
     public CidadeDTO() {
 
     }
@@ -54,5 +56,13 @@ public class CidadeDTO implements Serializable {
 
     public void setEstado(Estado estado) {
         this.estado = estado;
+    }
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
     }
 }

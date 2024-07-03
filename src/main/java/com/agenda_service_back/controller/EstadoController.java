@@ -21,6 +21,7 @@ public class EstadoController {
     @GetMapping // retorna uma lista de estados
     public ResponseEntity<List<EstadoDTO>> getAllEstados(){
         List<EstadoDTO> estadoDTO = estadoService.findAll();
+        System.out.println(estadoDTO);
         return ResponseEntity.ok(estadoDTO);
     }
     @GetMapping("/{id}") // localhost:8080/estados/id

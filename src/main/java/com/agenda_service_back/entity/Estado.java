@@ -1,5 +1,6 @@
 package com.agenda_service_back.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -18,8 +19,10 @@ public class Estado implements Serializable {
     protected String nome;
 
     protected String uf;
-    @OneToMany(mappedBy = "estado")
-    private List<Cidade> cidade = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "estado", fetch=FetchType.EAGER)
+    private List<Cidade> cidades = new ArrayList<>();
 
 
     public Estado() {
@@ -52,6 +55,14 @@ public class Estado implements Serializable {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public List<Cidade> getCidades() {
+        return cidades;
+    }
+
+    public void setCidades(List<Cidade> cidades) {
+        this.cidades = cidades;
     }
 
     @Override

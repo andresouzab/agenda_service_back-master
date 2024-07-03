@@ -1,5 +1,6 @@
 package com.agenda_service_back.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
@@ -27,8 +28,10 @@ public class Endereco implements Serializable {
     @ManyToOne
     @JoinColumn(name = "cidade_id")
     protected Cidade cidade;
-    @OneToMany(mappedBy = "endereco")
-    protected List<Pessoa> pessoa = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "endereco", fetch=FetchType.EAGER)
+    protected List<Pessoa> pessoas = new ArrayList<>();
 
     public Endereco() {
     }
@@ -96,6 +99,14 @@ public class Endereco implements Serializable {
 
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
+    }
+
+    public List<Pessoa> getPessoas() {
+        return pessoas;
+    }
+
+    public void setPessoas(List<Pessoa> pessoas) {
+        this.pessoas = pessoas;
     }
 
     @Override
