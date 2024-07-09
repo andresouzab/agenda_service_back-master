@@ -1,5 +1,6 @@
 package com.agenda_service_back.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 
@@ -13,13 +14,8 @@ public class Telefone implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
     protected String numero;
-//    @ManyToOne
-//    @JoinColumn(name = "pessoa_fisica_id")
-//    protected PessoaFisica pessoaFisica;
-//    @ManyToOne
-//    @JoinColumn(name = "pessoa_juridica_id")
-//    protected PessoaJuridica pessoaJuridica;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn (name = "pessoa_telefone")
     protected Pessoa pessoa;
@@ -29,9 +25,10 @@ public class Telefone implements Serializable {
     public Telefone() {
     }
 
-    public Telefone(Integer id, String numero) {
+    public Telefone(Integer id, String numero, Pessoa pessoa) {
         this.id = id;
         this.numero = numero;
+        this.pessoa = pessoa;
 
     }
 
@@ -49,6 +46,14 @@ public class Telefone implements Serializable {
 
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     @Override

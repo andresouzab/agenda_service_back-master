@@ -23,7 +23,7 @@ public class Pessoa implements Serializable {
     protected String senha;
 
     //verificar na tabela
-    @OneToMany(mappedBy = "pessoa")
+    @OneToMany(mappedBy = "pessoa", fetch = FetchType.EAGER)
     protected List<Telefone> telefone = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
