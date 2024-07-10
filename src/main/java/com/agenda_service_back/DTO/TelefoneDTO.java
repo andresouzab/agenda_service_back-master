@@ -1,6 +1,7 @@
 package com.agenda_service_back.DTO;
 
 import com.agenda_service_back.entity.Pessoa;
+import com.agenda_service_back.entity.PessoaJuridica;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
@@ -13,12 +14,16 @@ public class TelefoneDTO implements Serializable {
     @NotNull(message = "O campo NUMERO é requerido")
     protected String numero;
     protected Pessoa pessoa;
+    protected PessoaJuridica pessoaJuridica;
 
-    public TelefoneDTO(Integer id, String numero, Pessoa pessoa) {
+
+    public TelefoneDTO(Integer id, String numero, Pessoa pessoa, PessoaJuridica pessoaJuridica) {
         this.id = id;
         this.numero = numero;
         this.pessoa = pessoa;
+        this.pessoaJuridica = pessoaJuridica;
     }
+
     public TelefoneDTO() {
 
     }
@@ -45,5 +50,13 @@ public class TelefoneDTO implements Serializable {
 
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
+    }
+
+    public PessoaJuridica getPessoaJuridica() {
+        return pessoaJuridica;
+    }
+
+    public void setPessoaJuridica(PessoaJuridica pessoaJuridica) {
+        this.pessoaJuridica = pessoaJuridica;
     }
 }

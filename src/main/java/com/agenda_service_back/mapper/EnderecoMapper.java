@@ -28,7 +28,8 @@ public interface EnderecoMapper {
             @Mapping(source = "enderecoDTO.complemento", target = "complemento"),
             @Mapping(source = "enderecoDTO.bairro", target = "bairro"),
             @Mapping(source = "enderecoDTO.cidade", target = "cidade"),
-            @Mapping(source = "enderecoDTO.pessoas", target = "pessoas")
+            @Mapping(source = "enderecoDTO.pessoas", target = "pessoas"),
+            @Mapping(source = "enderecoDTO.pessoasJuridicas", target = "pessoasJuridicas")
     })
     Endereco updateEntity(EnderecoDTO enderecoDTO, Endereco endereco);
 

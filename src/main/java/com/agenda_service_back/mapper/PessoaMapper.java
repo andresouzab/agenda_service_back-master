@@ -23,6 +23,8 @@ public interface PessoaMapper {
     @Mappings({
             @Mapping(source = "pessoaDTO.id", target = "id"),
             @Mapping(source = "pessoaDTO.nome", target = "nome"),
+            @Mapping(source = "pessoaDTO.cpf", target = "cpf"),
+            @Mapping(source = "pessoaDTO.data_nascimento", target = "data_nascimento"),
             @Mapping(source = "pessoaDTO.email", target = "email"),
             @Mapping(source = "pessoaDTO.senha", target = "senha"),
             @Mapping(source = "pessoaDTO.telefone", target = "telefone"),

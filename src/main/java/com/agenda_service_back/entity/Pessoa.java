@@ -3,11 +3,7 @@ package com.agenda_service_back.entity;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Pessoa implements Serializable {
@@ -17,6 +13,9 @@ public class Pessoa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
     protected String nome;
+
+    protected String cpf;
+    protected Date data_nascimento;
     @Column(unique = true)
     protected String email;
 
@@ -33,9 +32,11 @@ public class Pessoa implements Serializable {
     public Pessoa() {
     }
 
-    public Pessoa(Integer id, String nome, String email, String senha, Endereco endereco) {
+    public Pessoa(Integer id, String nome, String cpf, Date data_nascimento, String email, String senha, Endereco endereco) {
         this.id = id;
         this.nome = nome;
+        this.cpf = cpf;
+        this.data_nascimento = data_nascimento;
         this.email = email;
         this.senha = senha;
         this.endereco = endereco;
@@ -89,6 +90,21 @@ public class Pessoa implements Serializable {
         this.endereco = endereco;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Date getData_nascimento() {
+        return data_nascimento;
+    }
+
+    public void setData_nascimento(Date data_nascimento) {
+        this.data_nascimento = data_nascimento;
+    }
 
     @Override
     public boolean equals(Object o) {

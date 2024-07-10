@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PessoaDTO implements Serializable{
@@ -16,6 +17,11 @@ public class PessoaDTO implements Serializable{
 
         @NotNull(message = "o campo NOME é requerido.")
         protected String nome;
+
+        @NotNull(message = "o campo CPF é requerido.")
+        protected String cpf;
+        @NotNull(message = "o campo DATA DE NASCIMENTO é requerido.")
+        protected Date data_nascimento;
         @NotNull(message = "o campo EMAIL é requerido.")
         protected String email;
 
@@ -26,13 +32,16 @@ public class PessoaDTO implements Serializable{
 
         protected Endereco endereco;
 
-    public PessoaDTO(Integer id, String nome, String email, String senha, Endereco endereco) {
+    public PessoaDTO(Integer id, String nome, String cpf, Date data_nascimento, String email, String senha, Endereco endereco) {
         this.id = id;
         this.nome = nome;
+        this.cpf = cpf;
+        this.data_nascimento = data_nascimento;
         this.email = email;
         this.senha = senha;
         this.endereco = endereco;
     }
+
     public PessoaDTO() {
 
     }
@@ -83,5 +92,21 @@ public class PessoaDTO implements Serializable{
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Date getData_nascimento() {
+        return data_nascimento;
+    }
+
+    public void setData_nascimento(Date data_nascimento) {
+        this.data_nascimento = data_nascimento;
     }
 }

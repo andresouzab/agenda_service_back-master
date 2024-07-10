@@ -3,6 +3,7 @@ package com.agenda_service_back.DTO;
 import com.agenda_service_back.entity.Cidade;
 
 import com.agenda_service_back.entity.Pessoa;
+import com.agenda_service_back.entity.PessoaJuridica;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
@@ -30,6 +31,9 @@ public class EnderecoDTO implements Serializable {
     protected Cidade cidade;
 
     protected List<Pessoa> pessoas;
+
+    protected List<PessoaJuridica> pessoasJuridicas;
+
 
 
     public EnderecoDTO(Integer id, String rua, String cep, Integer numero, String complemento, String bairro, Cidade cidade) {
@@ -107,6 +111,14 @@ public class EnderecoDTO implements Serializable {
 
     public void setPessoas(List<Pessoa> pessoas) {
         this.pessoas = pessoas;
+    }
+
+    public List<PessoaJuridica> getPessoasJuridicas() {
+        return pessoasJuridicas;
+    }
+
+    public void setPessoasJuridicas(List<PessoaJuridica> pessoasJuridicas) {
+        this.pessoasJuridicas = pessoasJuridicas;
     }
 
     @Override

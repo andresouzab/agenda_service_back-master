@@ -26,20 +26,20 @@ public class Agendamento implements Serializable{
     protected Servico servico;
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "pessoa_fisica_id")
-    protected PessoaFisica pessoaFisica;
+    @JoinColumn(name = "pessoa_id")
+    protected Pessoa pessoa;
 
 
     public Agendamento() {
     }
 
-    public Agendamento(Integer id, LocalDate data_inicio, LocalDate data_fim, String observacao, Servico servico, PessoaFisica pessoaFisica) {
+    public Agendamento(Integer id, LocalDate data_inicio, LocalDate data_fim, String observacao, Servico servico, Pessoa pessoa) {
         this.id = id;
         this.data_inicio = data_inicio;
         this.data_fim = data_fim;
         this.observacao = observacao;
         this.servico = servico;
-        this.pessoaFisica = pessoaFisica;
+        this.pessoa = pessoa;
     }
 
     public Integer getId() {
@@ -74,19 +74,20 @@ public class Agendamento implements Serializable{
         this.observacao = observacao;
     }
 
-    public Servico getServico_id() {
+    public Servico getServico() {
         return servico;
     }
 
-    public void setServico_id(Servico servico_id) {
-        this.servico = servico_id;
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
 
-    public PessoaFisica getPessoaFisica_id() {
-        return pessoaFisica;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setPessoaFisica_id(PessoaFisica pessoaFisica) {this.pessoaFisica = pessoaFisica;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     @Override

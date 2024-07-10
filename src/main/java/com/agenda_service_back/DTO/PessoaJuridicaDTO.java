@@ -1,39 +1,40 @@
-package com.agenda_service_back.entity;
+package com.agenda_service_back.DTO;
 
-import jakarta.persistence.*;
+import com.agenda_service_back.entity.Endereco;
+import com.agenda_service_back.entity.Servico;
+import com.agenda_service_back.entity.Telefone;
+import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-@Entity
-public class PessoaJuridica implements Serializable {
+
+public class PessoaJuridicaDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
 
+    @NotNull(message = "o campo NOME é requerido.")
     protected String nome;
+    @NotNull(message = "o campo CNPJ é requerido.")
     protected String cnpj;
+    @NotNull(message = "o campo RAZÃO SOCIAL é requerido.")
     protected String razao_social;
-
-    @Column(unique = true)
+    @NotNull(message = "o campo EMAIL é requerido.")
     protected String email;
-
+    @NotNull(message = "o campo SENHA é requerido.")
     protected String senha;
 
-    @OneToMany(mappedBy = "pessoaJuridica", fetch = FetchType.EAGER)
-    protected List<Telefone> telefone = new ArrayList<>();
+    protected List<Telefone> telefone;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "endereco_id")
+    @NotNull(message = "o campo ENDEREÇO é requerido.")
     protected Endereco endereco;
-
-    @OneToMany(mappedBy = "pessoaJuridica", fetch = FetchType.EAGER)
-    protected List<Servico> servico = new ArrayList<>();
+    protected List<Servico> servico;
 
 
-    public PessoaJuridica(Integer id, String nome, String cnpj, String razao_social, String email, String senha, Endereco endereco) {
+    public PessoaJuridicaDTO() {
+    }
+
+    public PessoaJuridicaDTO(Integer id, String nome, String cnpj, String razao_social, String email, String senha, Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.cnpj = cnpj;
@@ -41,9 +42,6 @@ public class PessoaJuridica implements Serializable {
         this.email = email;
         this.senha = senha;
         this.endereco = endereco;
-    }
-
-    public PessoaJuridica() {
     }
 
     public String getCnpj() {
@@ -118,4 +116,5 @@ public class PessoaJuridica implements Serializable {
         this.endereco = endereco;
     }
 }
+
 

@@ -26,6 +26,8 @@ public interface TelefoneMapper {
             @Mapping(source = "telefoneDTO.id", target = "id"),
             @Mapping(source = "telefoneDTO.numero", target = "numero"),
             @Mapping(source = "telefoneDTO.pessoa", target = "pessoa"),
+            @Mapping(source = "telefoneDTO.pessoaJuridica", target = "pessoaJuridica"),
+
     })
     Telefone updateEntity(TelefoneDTO telefoneDTO, Telefone telefone);
 

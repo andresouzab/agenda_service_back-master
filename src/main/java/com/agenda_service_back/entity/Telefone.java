@@ -20,16 +20,21 @@ public class Telefone implements Serializable {
     @JoinColumn (name = "pessoa_telefone")
     protected Pessoa pessoa;
 
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn (name = "pessoaJuridica_telefone")
+    protected PessoaJuridica pessoaJuridica;
+
 
 
     public Telefone() {
     }
 
-    public Telefone(Integer id, String numero, Pessoa pessoa) {
+    public Telefone(Integer id, String numero, Pessoa pessoa, PessoaJuridica pessoaJuridica) {
         this.id = id;
         this.numero = numero;
         this.pessoa = pessoa;
-
+        this.pessoaJuridica = pessoaJuridica;
     }
 
     public Integer getId() {
@@ -54,6 +59,14 @@ public class Telefone implements Serializable {
 
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
+    }
+
+    public PessoaJuridica getPessoaJuridica() {
+        return pessoaJuridica;
+    }
+
+    public void setPessoaJuridica(PessoaJuridica pessoaJuridica) {
+        this.pessoaJuridica = pessoaJuridica;
     }
 
     @Override
