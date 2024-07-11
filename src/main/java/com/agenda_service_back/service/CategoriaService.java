@@ -44,7 +44,7 @@ public class CategoriaService {
     public CategoriaDTO update(Integer id,CategoriaDTO categoriaDTO){
         Categoria categoria = categoriaRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("Categoria não"));
-        categoriaMapper.updateEntity(categoriaDTO,categoria);
+        categoria = categoriaMapper.updateEntity(categoriaDTO,categoria);
         categoria = categoriaRepository.save(categoria);
         return categoriaMapper.toDTO(categoria);
     }

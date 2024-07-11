@@ -1,6 +1,7 @@
 package com.agenda_service_back.DTO;
 
 import com.agenda_service_back.entity.Pessoa;
+import com.agenda_service_back.entity.Servico;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -8,6 +9,7 @@ import jakarta.validation.constraints.Null;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class AgendamentoDTO implements Serializable {
 
@@ -16,13 +18,14 @@ public class AgendamentoDTO implements Serializable {
     protected Integer id;
     @NotNull(message = "O campo DATA DE INICIO é requerido")
     @JsonFormat(pattern = "dd/MM/yyyy")
-    protected DateTimeFormat data_inicio;
+    protected LocalDate data_inicio;
     @NotNull(message = "O campo DATA FINAL é requerido")
     @JsonFormat(pattern = "dd/MM/yyyy")
-    protected DateTimeFormat data_fim;
+    protected LocalDate data_fim;
     @NotNull(message = "O campo OBSERVAÇÃO é requerido")
     protected String observacao;
-    protected Integer servico_id;
+
+    protected Servico servico;
 
     protected Pessoa pessoa;
 
@@ -31,12 +34,12 @@ public class AgendamentoDTO implements Serializable {
 
     }
 
-    public AgendamentoDTO(Integer id, DateTimeFormat data_inicio, DateTimeFormat data_fim, String observacao, Integer servico_id, Pessoa pessoa) {
+    public AgendamentoDTO(Integer id, LocalDate data_inicio, LocalDate data_fim, String observacao, Servico servico, Pessoa pessoa) {
         this.id = id;
         this.data_inicio = data_inicio;
         this.data_fim = data_fim;
         this.observacao = observacao;
-        this.servico_id = servico_id;
+        this.servico = servico;
         this.pessoa = pessoa;
     }
 
@@ -48,19 +51,19 @@ public class AgendamentoDTO implements Serializable {
         this.id = id;
     }
 
-    public DateTimeFormat getData_inicio() {
+    public LocalDate getData_inicio() {
         return data_inicio;
     }
 
-    public void setData_inicio(DateTimeFormat data_inicio) {
+    public void setData_inicio(LocalDate data_inicio) {
         this.data_inicio = data_inicio;
     }
 
-    public DateTimeFormat getData_fim() {
+    public LocalDate getData_fim() {
         return data_fim;
     }
 
-    public void setData_fim(DateTimeFormat data_fim) {
+    public void setData_fim(LocalDate data_fim) {
         this.data_fim = data_fim;
     }
 
@@ -72,12 +75,12 @@ public class AgendamentoDTO implements Serializable {
         this.observacao = observacao;
     }
 
-    public Integer getServico_id() {
-        return servico_id;
+    public Servico getServico() {
+        return servico;
     }
 
-    public void setServico_id(Integer servico_id) {
-        this.servico_id = servico_id;
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
 
     public Pessoa getPessoa() {

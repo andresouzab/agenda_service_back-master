@@ -1,5 +1,6 @@
 package com.agenda_service_back.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -29,6 +30,7 @@ public class PessoaJuridica implements Serializable {
     @JoinColumn(name = "endereco_id")
     protected Endereco endereco;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "pessoaJuridica", fetch = FetchType.EAGER)
     protected List<Servico> servico = new ArrayList<>();
 

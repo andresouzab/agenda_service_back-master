@@ -21,7 +21,7 @@ public class Categoria implements Serializable {
 
     protected String descricao;
 
-    @OneToMany(mappedBy = "categoria")
+    @OneToMany(mappedBy = "categoria", fetch = FetchType.EAGER)
     protected List<Servico> servico = new ArrayList<>();
 
 

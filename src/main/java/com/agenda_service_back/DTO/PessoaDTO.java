@@ -2,6 +2,7 @@ package com.agenda_service_back.DTO;
 
 import com.agenda_service_back.entity.Endereco;
 import com.agenda_service_back.entity.Telefone;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -20,7 +21,10 @@ public class PessoaDTO implements Serializable{
 
         @NotNull(message = "o campo CPF é requerido.")
         protected String cpf;
-        @NotNull(message = "o campo DATA DE NASCIMENTO é requerido.")
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
+
+    @NotNull(message = "o campo DATA DE NASCIMENTO é requerido.")
         protected Date data_nascimento;
         @NotNull(message = "o campo EMAIL é requerido.")
         protected String email;

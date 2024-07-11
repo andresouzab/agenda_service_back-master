@@ -1,5 +1,6 @@
 package com.agenda_service_back.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Null;
 
@@ -15,27 +16,32 @@ public class Servico implements Serializable {
     protected Integer id;
 
     protected String nome;
-    @Null
+
     protected Double preco;
     protected String descricao;
 
-    @Null
+
     protected String informacoes_extras;
+
     protected String status;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     protected Categoria categoria;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "pessoa_juridica_id")
     protected PessoaJuridica pessoaJuridica;
 
-    @OneToMany (mappedBy = "servico")
+    @JsonIgnore
+    @OneToMany (mappedBy = "servico", fetch = FetchType.EAGER)
     private List<Agendamento> agendamento = new ArrayList<>();
 
 
     public Servico() {
     }
+
     public Servico(Integer id, String nome, Double preco, String descricao, String informacoes_extras, String status, Categoria categoria, PessoaJuridica pessoaJuridica) {
         this.id = id;
         this.nome = nome;
@@ -95,20 +101,28 @@ public class Servico implements Serializable {
         this.status = status;
     }
 
-    public Categoria getCategoria_id() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria_id(Categoria categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
-    public PessoaJuridica getPessoaJuridica_id() {
+    public PessoaJuridica getPessoaJuridica() {
         return pessoaJuridica;
     }
 
-    public void setPessoaJuridica_id(PessoaJuridica pessoaJuridica) {
+    public void setPessoaJuridica(PessoaJuridica pessoaJuridica) {
         this.pessoaJuridica = pessoaJuridica;
+    }
+
+    public List<Agendamento> getAgendamento() {
+        return agendamento;
+    }
+
+    public void setAgendamento(List<Agendamento> agendamento) {
+        this.agendamento = agendamento;
     }
 
     @Override

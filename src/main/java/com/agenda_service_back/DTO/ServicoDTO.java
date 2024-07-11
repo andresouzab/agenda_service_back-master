@@ -1,6 +1,8 @@
 package com.agenda_service_back.DTO;
 
 import com.agenda_service_back.entity.Agendamento;
+import com.agenda_service_back.entity.Categoria;
+import com.agenda_service_back.entity.PessoaJuridica;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
@@ -22,20 +24,19 @@ public class ServicoDTO implements Serializable{
         protected String informacoes_extras;
         @NotNull(message = "O campo STATUS é requerido")
         protected String status;
-        protected Integer categoria_id;
-        protected Integer pessoaJuridica_id;
+        protected Categoria categoria;
+        protected PessoaJuridica pessoaJuridica;
         private List<Agendamento> agendamento = new ArrayList<>();
 
-        public ServicoDTO(Integer id, String nome, Double preco, String descricao, String informacoes_extras, String status, Integer categoria_id, Integer pessoaJuridica_id, List<Agendamento> agendamento) {
+        public ServicoDTO(Integer id, String nome, Double preco, String descricao, String informacoes_extras, String status, Categoria categoria, PessoaJuridica pessoaJuridica) {
                 this.id = id;
                 this.nome = nome;
                 this.preco = preco;
                 this.descricao = descricao;
                 this.informacoes_extras = informacoes_extras;
                 this.status = status;
-                this.categoria_id = categoria_id;
-                this.pessoaJuridica_id = pessoaJuridica_id;
-                this.agendamento = agendamento;
+                this.categoria = categoria;
+                this.pessoaJuridica = pessoaJuridica;
         }
 
         public ServicoDTO() {
@@ -90,20 +91,20 @@ public class ServicoDTO implements Serializable{
                 this.status = status;
         }
 
-        public Integer getCategoria_id() {
-                return categoria_id;
+        public Categoria getCategoria() {
+                return categoria;
         }
 
-        public void setCategoria_id(Integer categoria_id) {
-                this.categoria_id = categoria_id;
+        public void setCategoria(Categoria categoria) {
+                this.categoria = categoria;
         }
 
-        public Integer getPessoaJuridica_id() {
-                return pessoaJuridica_id;
+        public PessoaJuridica getPessoaJuridica() {
+                return pessoaJuridica;
         }
 
-        public void setPessoaJuridica_id(Integer pessoaJuridica_id) {
-                this.pessoaJuridica_id = pessoaJuridica_id;
+        public void setPessoaJuridica(PessoaJuridica pessoaJuridica) {
+                this.pessoaJuridica = pessoaJuridica;
         }
 
         public List<Agendamento> getAgendamento() {

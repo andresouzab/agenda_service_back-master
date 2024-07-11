@@ -1,5 +1,6 @@
 package com.agenda_service_back.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
@@ -19,11 +20,12 @@ public class Agendamento implements Serializable{
     protected Integer id;
     protected LocalDate data_inicio;
     protected LocalDate data_fim;
-    @Null
     protected String observacao;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "servico_id")
     protected Servico servico;
+    @JsonIgnore
     @NotNull
     @ManyToOne
     @JoinColumn(name = "pessoa_id")
